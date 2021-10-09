@@ -20,9 +20,8 @@ jobs:
   firebase-deploy:
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
-
-    # Steps represent a sequence of tasks that will be executed as part of the job
-   steps:
+    
+    steps:
     - uses: actions/checkout@master
     - uses: actions/setup-node@master
       with:
@@ -30,7 +29,7 @@ jobs:
     - run: npm install
     - run: npm run build:prod
     - uses: w9jds/firebase-action@master
-  with:
-    args: deploy --only hosting
+    with:
+      args: deploy --only hosting
   env:
     FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
